@@ -189,4 +189,3 @@ if __name__ == "__main__":
             print("Erro ao inicializar chat.")
     else:
         print("Erro ao processar legendas dos vídeos.")
-        
