@@ -1,0 +1,1 @@
+Você irá receber um texto grande que representa a legenda retirada de um video do youtube, seu objetivo é ler atentamente a legenda e gerar um pequeno relatorio das partes mais significantes presentes no texto.
