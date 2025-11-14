@@ -67,13 +67,28 @@ https://youtu.be/video1, https://youtu.be/video2
 
 ### 🔧 Melhorias Recentes
 
-- ✨ Detecção automática de **qualquer idioma** disponível
-- ✨ Aceitação de **todos os formatos** de legenda (não apenas srv3/srv2/srv1)
-- ✨ Priorização inteligente: português-BR → português → inglês → outros idiomas
-- ✨ Logs informativos mostrando o progresso em cada etapa
-- ✨ Validação de legendas vazias ou muito curtas
-- ✨ Tratamento melhorado de erros com mensagens claras
-- ✨ Decodificação de entidades HTML nas legendas
+- 🚀 **Nova engine de extração**: Usa `youtube-transcript-api` como método principal (mais confiável!)
+- ✨ **Método duplo**: Fallback automático para yt-dlp se necessário
+- ✨ **Detecção precisa de idiomas**: Identifica legendas manuais vs automáticas separadamente
+- ✨ **Priorização inteligente**: pt → pt-BR → pt-PT → en → outros idiomas
+- ✨ **Logs informativos**: Mostra todos os idiomas disponíveis e qual foi escolhido
+- ✨ **Legendas limpas**: Extrai apenas o texto sem timestamps ou marcações
+- ✨ **Tratamento de erros robusto**: Mensagens claras e fallback automático
+
+### 🔧 Como Funciona
+
+O programa agora usa **dois métodos** para garantir máxima compatibilidade:
+
+1. **youtube-transcript-api** (método principal)
+   - Mais rápido e confiável
+   - Acesso direto às legendas do YouTube
+   - Detecta idiomas com precisão
+   - Separa legendas manuais de automáticas
+
+2. **yt-dlp** (fallback automático)
+   - Usado se o primeiro método falhar
+   - Suporta mais formatos
+   - Compatível com mais regiões
 
 ### ❓ FAQ
 
@@ -83,8 +98,14 @@ R: Não. O vídeo precisa ter legendas (automáticas ou manuais) disponíveis no
 **P: Preciso especificar o idioma do vídeo?**
 R: Não! O programa detecta automaticamente e escolhe o melhor idioma disponível.
 
+**P: Por que estava detectando inglês para vídeos em português?**
+R: Versão anterior usava apenas yt-dlp que às vezes confundia legendas traduzidas com originais. Nova versão usa youtube-transcript-api que identifica corretamente o idioma original.
+
 **P: Quais APIs pagas são usadas?**
 R: Apenas a API da OpenAI para gerar os resumos. As legendas são extraídas gratuitamente do YouTube.
 
 **P: Funciona com vídeos privados?**
 R: Não, apenas vídeos públicos com legendas disponíveis.
+
+**P: O que fazer se aparecer "erro 403" ou "Forbidden"?**
+R: Isso geralmente acontece por bloqueio de rede/firewall. Tente usar uma VPN ou aguarde alguns minutos antes de tentar novamente.
